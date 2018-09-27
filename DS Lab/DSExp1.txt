@@ -1,0 +1,307 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Node{
+  int data;
+  struct Node *next;
+}node;
+
+node *create(node *head, node *start2){
+  if(head==NULL){
+    node *newnode;
+    int data;
+    newnode=(node*)malloc(sizeof(node));
+    printf("\nEnter data for the node 1:");
+    scanf("%d", &data);
+    newnode->data=data;
+    newnode->next=NULL;
+    head=newnode;
+    return head;
+  }
+  else {
+    node *newnode;
+    int data;
+    newnode=(node*)malloc(sizeof(node));
+    printf("\nEnter data for the node 2: ");
+    scanf("%d", &data);
+    newnode->data=data;
+    newnode->next=NULL;
+    start2=newnode;
+    return start2;
+  }
+}
+node *insert_beg(node *head){
+  node *temp, *newnode;
+  int data;
+  temp=head;
+  newnode=(node*)malloc(sizeof(node));
+  printf("\nEnter data for node: ");
+  scanf("%d", &data);
+  newnode->data=data;
+  newnode->next=temp;
+  head=newnode;
+  return head;
+}
+void insert_end(node *head, node *head2){
+  node *temp, *newnode, *temp2;
+  int data;
+  temp=head;
+  temp2=head2;
+  while(temp->next!=NULL){
+    temp=temp->next;
+  }
+  if(head2!=NULL){
+  while(temp2->next!=NULL){
+    temp2=temp2->next;
+  }
+  }
+  if(head2==NULL){
+  newnode=(node*)malloc(sizeof(node));
+  printf("\nEnter data for node: ");
+  scanf("%d", &data);
+  newnode->data=data;
+  newnode->next=NULL;
+  temp->next=newnode;
+  }
+  else{
+  newnode=(node*)malloc(sizeof(node));
+  printf("\nEnter data for node 2: ");
+  scanf("%d", &data);
+  newnode->data=data;
+  newnode->next=NULL;
+  temp2->next=newnode;
+  }
+}
+
+void insert_bef(node* head){
+  int existing_data, newdata;
+  node *prevnode=head, *newnode,*temp=head;
+printf("\nEnter the data before which node should be inserted: ");
+scanf("%d", &existing_data);
+while(temp->data!=existing_data){
+   prevnode=temp;
+   temp=temp->next;
+   if(temp->next==NULL){
+      //printf("Data not found");
+      break;
+}
+}
+if(temp->data==existing_data){
+printf("Enter data for new node: ");
+scanf("%d", &newdata);
+newnode=(node*)malloc(sizeof(node));
+newnode->data=newdata;
+newnode->next=temp;
+prevnode->next=newnode;
+}
+else{
+  printf("No such data found");
+}
+}
+node *delete_beg(node *head){
+  node *ptr=head;
+  head=head->next;
+  free(ptr);
+  return head;
+}
+void delete_end(node *head){
+  node *ptr=head, *prev=head;
+  while(ptr->next!=NULL){
+    prev=ptr;
+    ptr=ptr->next;
+  }
+  prev->next=NULL;
+  free(ptr);
+}
+void delete_bef(node *head){
+   int existing_data;
+  node *prevnode=head,*temp=head;
+printf("\nEnter the data whose node should be deleted: ");
+scanf("%d", &existing_data);
+while(temp->data!=existing_data){
+   prevnode=temp;
+   temp=temp->next;
+   if(temp->next==NULL){
+      //printf("Data not found");
+      break;
+}
+}
+if(temp->data==existing_data){
+prevnode->next=temp->next;
+temp->next=NULL;
+free(temp);
+}
+else
+  printf("No data found.");
+}
+void delete_aft(node *head){
+   int existing_data, newdata;
+  node *nextnode=head, *temp=head;
+printf("\nEnter the data after which node should be deleted: ");
+scanf("%d", &existing_data);
+while(temp->data!=existing_data){
+   nextnode=temp;
+   temp=temp->next;
+   if(temp->next==NULL){
+      //printf("Data not found");
+      break;
+}
+}
+if(temp->data==existing_data){
+nextnode=temp;
+temp=temp->next;
+nextnode->next=temp->next;
+temp->next=NULL;
+free(temp);
+}
+}
+void insert_aft(node *head){
+   int existing_data, newdata;
+  node *nextnode=head, *newnode,*temp=head;
+printf("\nEnter the data after which node should be inserted: ");
+scanf("%d", &existing_data);
+while(temp->data!=existing_data){
+   nextnode=temp;
+   temp=temp->next;
+   if(temp->next==NULL){
+      //printf("Data not found");
+      break;
+}
+}
+if(temp->data==existing_data){
+printf("Enter data for new node: ");
+scanf("%d", &newdata);
+nextnode=temp;
+temp=temp->next;
+newnode=(node*)malloc(sizeof(node));
+newnode->data=newdata;
+newnode->next=temp;
+nextnode->next=newnode;
+}
+else{
+  printf("No such data found");
+}
+}
+void display(node *head){
+  node *ptr=head;
+  if(ptr==NULL)
+  printf("\nLinked list is empty.");
+  else{
+    printf("Data is: ");
+    while(ptr!=NULL){
+    printf(" %d ",ptr->data);
+    ptr=ptr->next;
+  }
+  }
+}
+void search(node *head){
+  int d;
+	printf("\nEnter the data to be searched: ");
+	scanf("%d",&d);
+	node *ptr;
+	ptr=head;
+	while(ptr->data!=d){
+		ptr=ptr->next;
+  }
+	if(ptr->next==NULL)
+		printf("\n Data not found.");
+	else
+		printf("\n Data is found at %p address.",ptr->next);
+}
+node *reverse_list(node *head){
+  node *prev=NULL, *curr=head, *next=NULL;
+  while(curr!=NULL){
+    next=curr->next;
+    curr->next=prev;
+    prev=curr;
+    curr=next;
+  } 
+  head=prev;
+  display(head);
+  return head;
+}
+void count(node *head){
+  node *temp=head;
+  int count=0;
+  while(temp!=NULL){
+    count++;
+    temp=temp->next;
+  }
+  printf("Number of nodes: %d", count);
+}
+void concatenate(node *start, node *start2){
+  node *s1=start, *s2=start2;
+  while(s1->next!=NULL){
+    s1=s1->next;
+  }
+  s1->next=s2;
+  display(start);
+}
+int main(){
+int choice = 5;
+node *start=NULL;
+node *start2=NULL;
+while(choice!=15){
+  printf("\n1. Create first node\n2. Insert node at start\n3. Insert node at end\n4. Insert before a node\n5. Insert after a node\n6. Delete first node\n7. Delete last node\n8. Delete particular node\n9. Delete after a node\n10. Search for a node\n11. Display Linked List\n12. Reverse the linked list\n13. Count\n14. Concatenate\n15. Exit\n");
+  printf("Enter a choice: ");
+  scanf("%d", &choice);
+  if(start==NULL && start2==NULL && choice!=1)
+  {
+    printf("Create a linked list first.");
+    continue;
+  }
+  switch(choice){
+    case 1:
+    if(start==NULL)
+    start=create(start, start2);
+    else
+    start2=create(start,start2);
+    break;
+    case 2:
+    start=insert_beg(start);
+    break;
+    case 3: 
+    insert_end(start, start2);
+    break;
+    case 4:
+    insert_bef(start);
+    break;
+    case 5:
+    insert_aft(start);
+    break;
+    case 6:
+    start=delete_beg(start);
+    break;
+    case 7:
+    delete_end(start);
+    break;
+    case 8:
+    delete_bef(start);
+    break;
+    case 9:
+    delete_aft(start);
+    break;
+    case 10:
+    search(start);
+    break;
+    case 11:
+    display(start);
+    break;
+    case 12:
+    start=reverse_list(start);
+    break;
+    case 13:
+    count(start);
+    break;
+    case 14:
+    concatenate(start,start2);
+    break;
+    case 15:
+    break;
+    default:
+    printf("Invalid Choice. Please try again.\n");
+    break;
+  }
+}
+return 0;
+}
