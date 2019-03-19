@@ -1,0 +1,13 @@
+﻿select * from theatre
+
+insert into theatre
+values(65, 'INOX', 'Dadar');
+
+insert into theatre
+values(71, 'Carnival','Kanjurmarg')
+
+insert into theatre
+values(404, 'PVR', 'Ulhasnagar')
+
+insert into theatre
+values(32, 'Sterling', 'Fort')

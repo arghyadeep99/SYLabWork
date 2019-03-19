@@ -1,0 +1,6 @@
+﻿insert into customer (email_id, name, age) values('g.bhagwanani@somaiya.edu','Gaurav Bhagwanani',19)
+﻿insert into customer (email_id, name, age) values('g.bhagwanani@somaiya.edu','Gaurav Bhagwanani',19)
+﻿insert into customer (email_id, name, age) values('g.bhagwanani@somaiya.edu','Gaurav Bhagwanani',19)
+﻿insert into customer (email_id, name, age) values('g.bhagwanani@somaiya.edu','Gaurav Bhagwanani',19)
+
+select * from customer

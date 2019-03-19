@@ -1,0 +1,16 @@
+﻿select * from reviews
+
+insert into reviews
+values(2323, 'Very funny movie, loved it.','Acting was superb, dialogues were good.')
+
+insert into reviews
+values(2323, 'Absolutely fantabulous.','Rowan Atkinson played an amazing role as the main character.')
+
+insert into reviews
+values(3232, 'Iron Man is just too cool!.','The storyline was very well done. Cinematography was also amazing.')
+
+insert into reviews
+values(1544, 'IT was very scary to watch.','Pennywise did an excellent job.')
+
+insert into reviews
+values(1234, 'Worth a watch!','Potrayal of Zuckerburg was perfect.')

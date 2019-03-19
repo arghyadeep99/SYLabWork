@@ -1,0 +1,23 @@
+﻿select * from cast_movie
+
+insert into cast_movie
+values(2323, 'Johnny Depp', 52, 30)
+
+insert into cast_movie
+values(3211, 'Rowan Atkinson', 52, 24)
+
+insert into cast_movie
+values(4123, 'Shah Rukh Khan', 52, 45)
+
+delete from cast_movie
+where cast_id=4123
+
+insert into cast_movie
+values(4545, 'Robert Downey Jr.', 45, 15)
+
+insert into cast_movie
+values(2123, 'Emma Stone', 26, 10)
+
+update cast_movie
+set no_of_movies=20
+where cast_id=3211

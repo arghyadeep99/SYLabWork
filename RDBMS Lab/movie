@@ -1,0 +1,28 @@
+﻿select * from movie
+
+insert into movie
+values(2323, 'Johnny English', '2012-05-02', 30, 'Comedy')
+
+insert into movie
+values(3232, 'Avengers', '2012-06-02', 30, 'Action')
+
+insert into movie
+values(1234, 'The Social Network', '2009-02-12', 30, 'Biography')
+
+insert into movie
+values(1544, 'IT', '2018-12-12', 5.0, 'Horror')
+
+insert into movie
+values(1155, 'Death Race', '2008-12-12', 4.5, 'Thriller')
+
+update movie
+set rating=4
+where movie_id=2323
+
+update movie
+set rating=4.7
+where movie_id=3232
+
+update movie
+set rating=3.7
+where movie_id=1234
